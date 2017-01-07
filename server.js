@@ -40,6 +40,16 @@ app.get("/view", function(require, result) {
     result.sendFile(path.join(__dirname, "view.html"));
 });
 
+// api links at bottom of page
+
+app.get("/api/reservation", function(require, result) {
+    result.json(reservation);
+});
+
+app.get("/api/waitinglist", function(require, result) {
+    result.json(waitingList);
+});
+
 // creating new reservation
 app.post("/api/reservation", function(require, result) {
     var newReservation = require.body;
@@ -57,8 +67,6 @@ app.post("/api/waitinglist", function(require, result) {
 });
 
 // searching for customers
-
-// api links at bottom of page
 
 // start server
 

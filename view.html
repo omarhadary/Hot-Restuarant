@@ -1,1 +1,72 @@
+<<<<<<< HEAD
 <html>view reservations page</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot Restaurant - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>HOTT RESTAURANT</h1>
+      <h3>Current Reservations and Waiting List</h3>
+      <hr>
+      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservations Tables</button></a>
+
+       <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span> Home Reservations</button></a>
+
+
+    </div>
+  </div>
+
+  <div id="tables">
+
+  </div>
+
+  <div id="waitList">
+
+  </div>
+
+
+  <footer> <a href="/"> API Table Link </a> | <a href="/"> API Wait List </a></footer>
+
+ <!--  <script type="text/javascript">
+    // Question: What does this code do?
+   
+      // Question: What does this code do??
+      $.get("http://localhost:8000/api")
+      .done(function(data) {
+        console.log(data);
+        console.log(data[0].routeName);
+        
+         for (var i =0; i < data.length; i++)
+         {
+        var wellSection = $("<div>");
+        wellSection.addClass('well');
+        wellSection.attr('id', 'characterWell' + i)
+        $('#wellSection').append(wellSection);        
+
+        $("#characterWell").append("<h2>" + data[i].name + "</h2>");
+        $("#characterWell").append("<h3>Role: " + data[i].role + "</h4>");
+        $("#characterWell").append("<h3>Age: " + data[i].age + "</h4>");
+        $("#characterWell").append("<h3>Force Points: " + data[i].forcePoints + "</h4>");  
+        }
+
+
+
+
+
+      });
+  </script> -->
+
+</body>
+</html>
+>>>>>>> abdullahFrontEnd

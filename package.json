@@ -3,24 +3,41 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+<<<<<<< HEAD
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "path": "^0.12.7"
   },
   "devDependencies": {},
+=======
+>>>>>>> 7478196b08f188e09a7956a08a807dbd266191cc
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "git+https://github.com/parkjjustin/Hot-Restuarant.git"
+=======
+    "url": "git+https://github.com/omarhadary/Hot-Restuarant.git"
+>>>>>>> 7478196b08f188e09a7956a08a807dbd266191cc
   },
   "author": "",
   "license": "ISC",
   "bugs": {
+<<<<<<< HEAD
     "url": "https://github.com/parkjjustin/Hot-Restuarant/issues"
   },
   "homepage": "https://github.com/parkjjustin/Hot-Restuarant#readme"
+=======
+    "url": "https://github.com/omarhadary/Hot-Restuarant/issues"
+  },
+  "homepage": "https://github.com/omarhadary/Hot-Restuarant#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+>>>>>>> 7478196b08f188e09a7956a08a807dbd266191cc
 }

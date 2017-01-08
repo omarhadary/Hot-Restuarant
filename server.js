@@ -1,8 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var tables = 3;
-
 
 var app = express();
 var PORT = 3000;

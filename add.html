@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>add.html</title>
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+<body>
+
+              <div class="panel-body">
+            <form action="" method="POST" role="form">
+
+              <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label for="">Phone</label>
+                <input type="text" class="form-control" id="phone" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label for="">Unique ID</label>
+                <input type="text" class="form-control" id="uniqueid" placeholder="">
+              </div>
+
+            </form>
+
+
+    <button id="addBtn">add</button>
+    <script type="text/javascript">
+    $("#addBtn").on("click", function() {
+      var newCustomer = {
+        name: $("#name").val().trim(),
+        email: $("#email").val().trim(),
+        phone: $("#phone").val().trim(),
+        uniqueid: $("#uniqueid").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("http://localhost:3000/api/tables", newCustomer)
+      .done(function(data) {
+        console.log(data);
+      });
+      return false;
+    });
+      </script>
+    </body>
+    </html>

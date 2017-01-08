@@ -13,15 +13,17 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>HOTT RESTAURANT</h1>
-      <h3>We only have 5 tables ! Book your seat before they all are gone !</h3>
+      
+      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> HOT RESTAURANT</h1>
+      <h3 class="text-center">We only have 5 tables ! Book your seat before they all are gone !</h3>
       <hr>
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-align-justify"></span> View Tables</button></a>
+      <div class="text-center">
+      <a href="/view"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-align-justify"></span> View Tables</button></a>
 
-       <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservations</button></a>
-
-
+       <a href="/add"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservations</button></a>
+      </div>
     </div>
+    <footer><a href="/api/tables"> API Table Link </a> | <a href="/"> API Wait List </a></footer>
   </div>
 
-   <footer> <a href="/"> API Table Link </a> | <a href="/"> API Wait List </a></footer>
+

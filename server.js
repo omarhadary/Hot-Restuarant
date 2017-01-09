@@ -1,8 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var tables = 3;
-
 
 var app = express();
 var PORT = 3000;
@@ -51,6 +49,14 @@ app.get("/api/tables", (request, response) => {
 
 app.post("/api/tables", (request, response) => {
   var newcustomer = request.body;
-  reservation.push(newcustomer);
+  if (reservation.length < 5) { 
+    reservation.push(newcustomer);
+  } else {
+    waitingList.push(newcustomer)
+  }
   response.json(newcustomer)
+});
+
+app.get("/api/waitinglist", (request, response) => {
+  response.json(waitingList);
 });

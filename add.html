@@ -67,7 +67,7 @@
     <script type="text/javascript">
         $("#addBtn").on("click", () => {
             var regex = /[a-z]/g
-            
+
             if ($("#name").val().trim() === "") {
                 console.log("Please enter your name");
             } else if ($("#phone").val().trim() === "") {
@@ -86,10 +86,22 @@
             $('input[type=text]').each(function() {
             $(this).val("");
             });
+         
+
+            $.get("http://localhost:3000/api/entirelist")
+            .done(function(data) {
+
+            if (data.length < 5) {
+                $(".panel-body").html("We have reserved a table for you! Thank you for dining with us!");
+            } else {
+                $(".panel-body").html("We do not have any tables left, you have been placed on our waiting list. Thank you for dining with us!");
+            }
+
+            });
 
             $.post("http://localhost:3000/api/tables", newCustomer)
             .done((data) => {
-                console.log(data);
+
             });
             return false;
             }

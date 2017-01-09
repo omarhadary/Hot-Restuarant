@@ -27,6 +27,8 @@ var reservation = [];
 
 var waitingList = [];
 
+var entireList = [];
+
 app.get("/", (request, response) => {
   response.sendFile(path.join(__dirname,"home.html"));
 });
@@ -49,6 +51,7 @@ app.get("/api/tables", (request, response) => {
 
 app.post("/api/tables", (request, response) => {
   var newcustomer = request.body;
+  entireList.push(newcustomer);
   if (reservation.length < 5) { 
     reservation.push(newcustomer);
   } else {
@@ -59,4 +62,8 @@ app.post("/api/tables", (request, response) => {
 
 app.get("/api/waitinglist", (request, response) => {
   response.json(waitingList);
+});
+
+app.get("/api/entirelist", (request, response) => {
+  response.json(entireList);
 });

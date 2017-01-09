@@ -35,20 +35,22 @@
                             <div class="form-group">
                                 <label for="">Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="">
+                                <div class="error-name" style="color: red"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="">Phone Number</label>
                                 <input type="text" class="form-control" id="phone" placeholder="">
+                                <div class="error-phone" style="color: red"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="">Email</label>
+                                <label for="">Email (optional)</label>
                                 <input type="text" class="form-control" id="email" placeholder="">
                             </div>
 
                             <div class="form-group">
-                                <label for="">Unique ID</label>
+                                <label for="">Unique ID (optional)</label>
                                 <input type="text" class="form-control" id="uniqueID" placeholder="">
                             </div>
 
@@ -68,12 +70,15 @@
         $("#addBtn").on("click", () => {
             var regex = /[a-z]/g
 
-            if ($("#name").val().trim() === "") {
-                console.log("Please enter your name");
+            if ($("#name").val().trim() === "" && $("#phone").val().trim() === "" ) {
+                $(".error-name").html("Please enter your name");
+                $(".error-phone").html("Please enter your phone number");
+            } else if ($("#name").val().trim() === "") {
+                $(".error-name").html("Please enter your name");
             } else if ($("#phone").val().trim() === "") {
-                console.log("Please enter your phone number")
+                $(".error-phone").html("Please enter your phone number");
             } else if ($("#phone").val().trim().toLowerCase().match(regex)) {
-                console.log("Please enter a valid phone number")
+                $(".error-phone").html("Please enter a valid phone number");
             } else {
             var newCustomer = {
                 name: $("#name").val().trim(),

@@ -96,7 +96,7 @@
             $.get("http://localhost:3000/api/entirelist")
             .done(function(data) {
 
-            if (data.length < 5) {
+            if (data.length <= 5) {
                 $(".panel-body").html("We have reserved a table for you! Thank you for dining with us!");
             } else {
                 $(".panel-body").html("We do not have any tables left, you have been placed on our waiting list. Thank you for dining with us!");

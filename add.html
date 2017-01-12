@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,22 +10,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="jumbotron">
+    <div class="jumbotron">
+      
+      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> HOT RESTAURANT</h1>
+      <h3 class="text-center">Make your Reservation</h3>
+      <hr>
+      <div class="text-center">
                 <div class="row">
-                    <h1>
-                        <span class="glyphicon glyphicon-fire"></span>
-                        Hot Restaurant
-                    </h1>
-                </div>
-                <div class="row">
-                    <h2>
-                        Make Your Reservation
-                    </h2>
-                </div>
-                <div class="row">
-                    <button class="btn btn-primary btn-lg" id="addBtn"><span class="glyphicon glyphicon-home"></span> View Tables</button>
-                    <button class="btn btn-lg" id="addBtn"><span class="glyphicon glyphicon-home"></span></button>
+                    <a href="/view"><button class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span> View Tables</button></a>
+                    <a href="/"><button class="btn btn-lg"><span class="glyphicon glyphicon-home"></span></button></a>
                     
                 </div>
             </div>
@@ -43,49 +35,83 @@
                             <div class="form-group">
                                 <label for="">Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="">
+                                <div class="error-name" style="color: red"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="">Phone Number</label>
                                 <input type="text" class="form-control" id="phone" placeholder="">
+                                <div class="error-phone" style="color: red"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="">Email</label>
+                                <label for="">Email (optional)</label>
                                 <input type="text" class="form-control" id="email" placeholder="">
                             </div>
 
                             <div class="form-group">
-                                <label for="">Unique ID</label>
+                                <label for="">Unique ID (optional)</label>
                                 <input type="text" class="form-control" id="uniqueID" placeholder="">
                             </div>
 
                             </form>
                             <br>
                             <div class="text-left">
-                            <button type="submit" class="btn btn-primary btn-md" id="addBtn"></span><span class="glyphicon glyphicon-fire"></span> Make Reservation</button>
+                            <button type="submit" class="btn btn-danger btn-md" id="addBtn"></span><span class="glyphicon glyphicon-fire"></span> Make Reservation</button>
                             </div>
                         </div>
                     </div>
-                
+                   <footer><a href="/api/tables"> API Table Link </a> | <a href="/"> API Wait List </a></footer>
             </div>
         </div>
     </div>
-    <script type = "text/javascript">
-        $("#addBtn").on("click", function() {
-            var newReservation = {
+
+    <script type="text/javascript">
+        $("#addBtn").on("click", () => {
+            var regex = /[a-z]/g
+
+            if ($("#name").val().trim() === "" && $("#phone").val().trim() === "" ) {
+                $(".error-name").html("Please enter your name");
+                $(".error-phone").html("Please enter your phone number");
+            } else if ($("#name").val().trim() === "") {
+                $(".error-name").html("Please enter your name");
+            } else if ($("#phone").val().trim() === "") {
+                $(".error-phone").html("Please enter your phone number");
+            } else if ($("#phone").val().trim().toLowerCase().match(regex)) {
+                $(".error-phone").html("Please enter a valid phone number");
+            } else {
+            var newCustomer = {
                 name: $("#name").val().trim(),
                 phone: $("#phone").val().trim(),
                 email: $("#email").val().trim(),
-                id: $("#uniqueID").val().trim(),
+                id: $("#uniqueID").val().trim()
             };
-            $.post("http://localhost:3000/api/reservation", newReservation)
+
+            //This clears the fields after you click on button
+            $('input[type=text]').each(function() {
+            $(this).val("");
+            });
+         
+
+            $.get("http://localhost:3000/api/entirelist")
             .done(function(data) {
-                console.log(data);
-                alert("Adding reservation...");
+
+            if (data.length < 6) {
+                $(".panel-body").html("We have reserved a table for you! Thank you for dining with us!");
+            } else {
+                $(".panel-body").html("We do not have any tables left, you have been placed on our waiting list. Thank you for dining with us!");
+            }
+
+            });
+
+            $.post("http://localhost:3000/api/tables", newCustomer)
+            .done((data) => {
+
             });
             return false;
+            }
         });
+    
     </script>
 
 </body>

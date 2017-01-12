@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Hot Restaurant - Express</title>
-  <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -13,56 +12,63 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>HOTT RESTAURANT</h1>
-      <h3>Current Reservations and Waiting List</h3>
+      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> HOT RESTAURANT</h1>
+      <h3 class="text-center">Current Reservations and Waiting List</h3>
       <hr>
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservations Tables</button></a>
+      <div class="text-center">
+      <a href="/add"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservations</button></a>
 
        <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span> Home Reservations</button></a>
+       </div>
+       </div>
+       <div class="col-lg-12">
 
+				<!-- Current Tables in Use -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">Current Reservations</h4>
+					</div>
+					<div class="panel-body" id="tables">
+				</div>
+</div>
+				<!-- Waiting List Panel -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">Waiting List</h4>
+					</div>
+					<div class="panel-body" id="waitList">
+			
+				</div>
+			</div>
 
-    </div>
+    <footer><a href="/api/tables"> API Table Link </a> | <a href="/"> API Wait List </a></footer>
   </div>
 
-  <div id="tables">
-
-  </div>
-
-  <div id="waitList">
-
-  </div>
-
-
-  <footer> <a href="/"> API Table Link </a> | <a href="/"> API Wait List </a></footer>
-
- <!--  <script type="text/javascript">
-    // Question: What does this code do?
-   
-      // Question: What does this code do??
-      $.get("http://localhost:8000/api")
+   <script type="text/javascript">
+      $.get("http://localhost:3000/api/tables")
       .done(function(data) {
-        console.log(data);
-        console.log(data[0].routeName);
-        
-         for (var i =0; i < data.length; i++)
-         {
-        var wellSection = $("<div>");
-        wellSection.addClass('well');
-        wellSection.attr('id', 'characterWell' + i)
-        $('#wellSection').append(wellSection);        
 
-        $("#characterWell").append("<h2>" + data[i].name + "</h2>");
-        $("#characterWell").append("<h3>Role: " + data[i].role + "</h4>");
-        $("#characterWell").append("<h3>Age: " + data[i].age + "</h4>");
-        $("#characterWell").append("<h3>Force Points: " + data[i].forcePoints + "</h4>");  
-        }
-
-
-
-
+        console.log(data)
+      for (var i=0; i < data.length; i++) {
+        $("#tables").append(
+          "<div class='well'><h2><span class='label label-danger'>" + (i + 1) + "</span>" + "&nbsp;" + data[i].name + "</h2></div>")
+      }
 
       });
-  </script> -->
+
+      $.get("http://localhost:3000/api/waitinglist")
+      .done(function(data) {
+
+        console.log(data)
+      for (var i=0; i < data.length; i++) {
+        $("#waitList").append(
+          "<div class='well'><h2><span class='label label-danger'>" + (i + 1) + "</span>" + "&nbsp;" + data[i].name + "</h2></div>")
+      }
+
+      });
+
+
+  </script> 
 
 </body>
 </html>
